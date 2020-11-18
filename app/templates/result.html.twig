@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h2>Player 1 won {{ player1WinsCount }} hands.</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary" onClick="window.history.back();" type="button">
+                    Go back
+                </button>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
