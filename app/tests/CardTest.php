@@ -1,9 +1,6 @@
 <?php
 
-namespace App\Tests;
-
 use App\Entity\Card;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 class CardTest extends TestCase

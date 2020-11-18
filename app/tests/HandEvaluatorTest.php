@@ -1,13 +1,8 @@
 <?php
 
-namespace App\Tests;
-
 use App\Entity\Card;
 use App\Service\HandEvaluator;
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use SplFileInfo;
-use SplFileObject;
 use Symfony\Component\Filesystem\Exception\IOException;
 
 class HandEvaluatorTest extends TestCase
@@ -73,8 +68,8 @@ class HandEvaluatorTest extends TestCase
     }
 
     public function testEvaluateSevenHigh(): void {
-            $this->assertEquals(7462, $this->handEvaluator->evaluate([
-                new Card(Card::SEVEN, Card::HEARTS),
+        $this->assertEquals(7462, $this->handEvaluator->evaluate([
+            new Card(Card::SEVEN, Card::HEARTS),
             new Card(Card::FIVE, Card::CLUBS),
             new Card(Card::FOUR, Card::DIAMONDS),
             new Card(Card::TREY, Card::SPADES),
@@ -93,7 +88,7 @@ class HandEvaluatorTest extends TestCase
     }
 
     /**
-     * @throws IOException, URISyntaxException, IOExceptionInterface
+     * @throws IOException
      */
     public function testEvaluateAllHands() : void {
         $expectedHandCount = 2598960;
@@ -117,22 +112,6 @@ class HandEvaluatorTest extends TestCase
             ++$count;
         }
         $this->assertEquals($count, $expectedHandCount);
-
-//                    String line;
-//            while ((line = reader.readLine()) != null) {
-//                String cardsString = line.substring(0, line.lastIndexOf(" "));
-//                String valueString = line.substring(line.lastIndexOf(" ") + 1, line.length());
-//
-//                Card[] cards = HandEvaluator.fromString(cardsString);
-//                int expectedValue = Integer.parseInt(valueString);
-//                int evaluatedValue = HandEvaluator.evaluate(cards);
-//
-//                assertEquals(expectedValue, evaluatedValue, "Evaluation of hand '" + HandEvaluator.toString(cards) + "' (parsed from '" + cardsString + "') failed.");
-//                ++count;
-//            }
-//        }
-//
-//        assertEquals(count, expectedHandCount);
     }
 
     public function testTooFewFromString(): void {

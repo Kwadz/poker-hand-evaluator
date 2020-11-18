@@ -1,10 +1,6 @@
 <?php
 
-namespace App\Tests;
-
 use App\Entity\Card;
-use App\Entity\Hand;
-use App\Entity\Round;
 use App\Service\HandsFileParser;
 use PHPUnit\Framework\TestCase;
 
