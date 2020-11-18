@@ -54,7 +54,7 @@ class HandEvaluator implements Evaluator
 
         // Remaining cards
         $product = ($c1 & 0xFF) * ($c2 & 0xFF) * ($c3 & 0xFF) * ($c4 & 0xFF) * ($c5 & 0xFF);
-        $hash = $this->hash($product);
+
         return Values::TABLE[$this->hash($product)];
     }
 
