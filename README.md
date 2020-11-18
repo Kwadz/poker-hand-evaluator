@@ -13,7 +13,7 @@
 
 ## Run tests
 
-    php bin/phpunit
+    make test
 
 The file containing all the hand possibilities is big, therefore the test `testEvaluateAllHands` is long.
 
