@@ -3,12 +3,10 @@
 
 namespace App\Service;
 
-use App\Entity\Card;
-
 interface Evaluator
 {
     /**
-     * @param Card[] $cards
+     * @param array $cards
      * @return int
      */
     public function evaluate(array $cards): int;
