@@ -2,10 +2,9 @@
 
 namespace App\Service;
 
-use App\Service\Evaluator;
 use Doctrine\Common\Collections\Collection;
 
-class PlayerWinsCalculator implements Calculator
+class PlayerWinsCounter implements Counter
 {
     /**
      * The evaluator that gives the value of the given hand.
@@ -25,7 +24,7 @@ class PlayerWinsCalculator implements Calculator
      * @param Collection $rounds
      * @return int
      */
-    public function calculatePlayer1Wins(Collection $rounds): int
+    public function countPlayer1Wins(Collection $rounds): int
     {
         $player1WinsCount = 0;
         foreach ($rounds as $round) {

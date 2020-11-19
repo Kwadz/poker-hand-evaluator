@@ -3,9 +3,9 @@
 namespace App\Controller;
 
 use App\Form\FileUploadType;
+use App\Service\Counter;
 use App\Service\FileParser;
 use App\Service\FileUploader;
-use App\Service\PlayerWinsCalculator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,18 +17,18 @@ class DefaultController extends AbstractController
 
     private FileParser $fileParser;
 
-    private PlayerWinsCalculator $playerWinsCalculator;
+    private Counter $playerWinsCounter;
 
     /**
      * DefaultController constructor.
      *
-     * @param FileParser           $fileParser
-     * @param PlayerWinsCalculator $playerWinsCalculator
+     * @param FileParser $fileParser
+     * @param Counter    $playerWinsCounter
      */
-    public function __construct(FileParser $fileParser, PlayerWinsCalculator $playerWinsCalculator)
+    public function __construct(FileParser $fileParser, Counter $playerWinsCounter)
     {
-        $this->fileParser = $fileParser;
-        $this->playerWinsCalculator = $playerWinsCalculator;
+        $this->fileParser        = $fileParser;
+        $this->playerWinsCounter = $playerWinsCounter;
     }
 
     /**
@@ -55,7 +55,7 @@ class DefaultController extends AbstractController
                     $entityManager->persist($game);
 
                     return $this->render('result.html.twig', [
-                        'player1WinsCount' => $this->playerWinsCalculator->calculatePlayer1Wins($game->getRounds())
+                        'player1WinsCount' => $this->playerWinsCounter->countPlayer1Wins($game->getRounds())
                     ]);
                 } else {
                     $this->addFlash('error', 'The file could\'nt be uploaded!');

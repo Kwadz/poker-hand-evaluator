@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Entity\Game;
 use App\Entity\Hand;
-use App\Service\HandEvaluator;
 use App\Entity\Round;
 use SplFileObject;
 
@@ -14,7 +13,7 @@ class HandsFileParser implements FileParser
      * @param string $filename
      * @return Game
      */
-    public function parse($filename): Game
+    public function parse(string $filename): Game
     {
         $rounds = [];
         foreach(new SplFileObject($filename) as $line)
